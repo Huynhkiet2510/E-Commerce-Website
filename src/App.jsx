@@ -5,7 +5,7 @@ import Login from "./pages/Customer/Login/Login";
 import Profile from "./pages/Customer/Profile/ProfilePage";
 import OrderSuccess from "./pages/Customer/OrderSuccess/OrderSuccess"
 import ProductDetail from "./pages/Customer/ProductDetail/ProductDetail";
-import PromotionsPage from "./pages/Customer/PromotionsPage/PromotionsPage.JSX";
+import PromotionsPage from "./pages/Customer/PromotionsPage/PromotionsPage";
 import ProductManagement from "./pages/Admin/ProductManagement/ProductManagement"
 import CategoryManagement from "./pages/Admin/CategoryManagement/CategoryManagement";
 import GuestRoute from "./routes/GuestRoute";
