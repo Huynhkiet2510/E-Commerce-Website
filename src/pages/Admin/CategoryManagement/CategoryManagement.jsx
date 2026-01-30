@@ -55,6 +55,8 @@ const CategoryManagement = () => {
             />
           </Card>
 
+
+
           <CategoryModal
             open={isModalOpen}
             onSave={handleSave}
