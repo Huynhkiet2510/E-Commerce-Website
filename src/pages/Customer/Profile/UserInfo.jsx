@@ -1,5 +1,5 @@
 const UserInfo = ({ user, onLogout }) => (
-    <div className="col-span-12 lg:col-span-3 p-6 rounded-xl bg-white shadow">
+    <div className="col-span-12 lg:col-span-3 p-6 rounded-xl bg-card-bg shadow">
         <h2 className="text-xl font-bold mb-4">Thông tin tài khoản</h2>
         <div className="text-center">
             <img

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { logout } from '../../stores/authSlice';
@@ -30,6 +30,19 @@ export const useNavbarLogic = (setInputSearch) => {
             navigate("/");
         }
     };
+
+    useEffect(() => {
+        const handleClickOutSide = (e) => {
+            if (isUserMenuOpen && menuRef.current && !menuRef.current.contains(e.target)) {
+                setIsUserMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutSide);
+
+        return () =>  document.removeEventListener("mousedown", handleClickOutSide);
+
+    }, [isUserMenuOpen])
 
     const handleLogout = () => {
         dispatch(logout());

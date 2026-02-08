@@ -31,9 +31,9 @@ const PromotionsPage = () => {
     };
 
     return (
-        <div className="bg-gray-50 min-h-screen pb-12">
+        <div className="min-h-screen pb-12">
             {/* Banner Khuyến mãi */}
-            <div className="bg-red-600 text-white py-12 mb-8">
+            <div className="bg-red-600 py-12 mb-8">
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-5xl font-extrabold mb-4 uppercase tracking-widest">
                         Flash Sale Cuối Năm!
@@ -45,7 +45,7 @@ const PromotionsPage = () => {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {items.map((product) => (
-                        <div key={product.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition relative group">
+                        <div key={product.id} className="bg-card-bg rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition relative group">
 
                             {/* Badge Giảm giá */}
                             <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
@@ -64,19 +64,19 @@ const PromotionsPage = () => {
                             {/* Nội dung */}
                             <div className="p-4">
                                 <span className="text-xs text-gray-400 uppercase font-semibold">{product.category.name}</span>
-                                <h3 className="font-bold text-gray-800 mt-1 line-clamp-2 h-12">
+                                <h3 className="font-bold text-text-main mt-1 line-clamp-2 h-12">
                                     {product.title}
                                 </h3>
 
                                 <div className="flex items-end gap-2 mt-4">
                                     <span className="text-2xl font-bold text-red-600">${product.price}</span>
-                                    <span className="text-sm text-gray-400 line-through mb-1">${product.oldPrice}</span>
+                                    <span className="text-sm  line-through mb-1">${product.oldPrice}</span>
                                 </div>
 
                                 {/* Progress Bar (Giả lập số lượng còn lại) */}
                                 <div className="mt-4">
                                     <div className="flex justify-between text-xs mb-1">
-                                        <span className="text-gray-500">Đã bán: 85%</span>
+                                        <span >Đã bán: 85%</span>
                                         <span className="text-red-500 font-bold">Sắp cháy hàng</span>
                                     </div>
                                     <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
@@ -84,7 +84,7 @@ const PromotionsPage = () => {
                                     </div>
                                 </div>
 
-                                <button className="w-full mt-6 bg-red-600 text-white py-2 rounded-xl font-bold hover:bg-red-700 transition shadow-lg shadow-red-200">
+                                <button className="w-full mt-6 bg-red-600 text-white py-2 rounded-xl font-bold hover:bg-red-700 transitio">
                                     MUA NGAY
                                 </button>
                             </div>

@@ -1,10 +1,12 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import ListProduct from "./pages/Customer/ListProduct/ListProductPage";
 import CheckOut from "./pages/Customer/CheckOut/CheckOut";
-import Login from "./pages/Customer/Login/Login";
+import Login from "./pages/Customer/Login/LoginPage";
 import Profile from "./pages/Customer/Profile/ProfilePage";
-import OrderSuccess from "./pages/Customer/OrderSuccess/OrderSuccess"
-import ProductDetail from "./pages/Customer/ProductDetail/ProductDetail";
+import OrderSuccess from "./pages/Customer/OrderSuccess/OrderSuccessPage"
+import ProductDetail from "./pages/Customer/ProductDetail/ProductDetailPage";
 import PromotionsPage from "./pages/Customer/PromotionsPage/PromotionsPage";
 import ProductManagement from "./pages/Admin/ProductManagement/ProductManagement"
 import CategoryManagement from "./pages/Admin/CategoryManagement/CategoryManagement";
@@ -16,14 +18,14 @@ import LayoutAdmin from "./components/Layout/LayoutAdmin";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Contact from "./pages/Customer/Contact/Contact"
 import UnauthorizedPage from "./pages/Customer/Unauthorized/Unauthorized";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import ViewDetailOrderPage from "./pages/Customer/ViewDetailOrder/ViewDetailOrderPage";
 import { getProfile } from "../src/stores/authSlice";
 
 
 function App() {
   const dispatch = useDispatch();
   const { token, isInitialized } = useSelector(state => state.auth);
+  const theme = useSelector((state) => state.theme.mode);
 
   useEffect(() => {
     if (token) {
@@ -33,9 +35,19 @@ function App() {
     }
   }, [dispatch, token]);
 
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+
   if (token && !isInitialized) {
     return <LoadingSpinner />;
   }
+
 
   return (
     <Routes>
@@ -51,6 +63,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/ordersuccessfully" element={<OrderSuccess />} />
+          <Route path="/order/:id" element={<ViewDetailOrderPage />} />
         </Route>
       </Route>
 

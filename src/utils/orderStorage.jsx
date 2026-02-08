@@ -2,11 +2,10 @@
 export const getOrders = () => {
   try {
     const data = localStorage.getItem("orders");
-    // Nếu data là null, undefined hoặc chuỗi rỗng thì trả về mảng []
     return data ? JSON.parse(data) : [];
   } catch (error) {
     console.error("Lỗi khi parse dữ liệu từ LocalStorage:", error);
-    return []; // Trả về mảng rỗng để các hàm .map() không bị crash
+    return []; 
   }
 };
 
@@ -22,8 +21,16 @@ export const deleteOrderById = (orderId) => {
   const orders = getOrders();
   const updatedOrders = orders.filter(order => order.id !== orderId);
   localStorage.setItem("orders", JSON.stringify(updatedOrders));
-  return updatedOrders; // Trả về để UI cập nhật lại state
+  return updatedOrders; 
 };
 
 // 4. Xóa sạch mọi đơn hàng
 export const clearAllOrders = () => localStorage.removeItem("orders");
+
+// 5. Xem chi tiết đơn hàng
+export const viewDetailOrder = (id) => {
+  const rawData = localStorage.getItem("orders");
+  if (!rawData) return null;
+  const orders = JSON.parse(rawData);
+  return orders.find(order => order.id.toString() === id.toString());
+}

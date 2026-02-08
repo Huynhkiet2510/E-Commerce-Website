@@ -3,50 +3,55 @@ import { addToCart } from "../../../stores/cartSlice";
 import { formatUSD } from "../../../utils/formatCurrency";
 import { useDispatch } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { FaPlus } from "react-icons/fa6";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const CartProduct = ({ item }) => {
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     return (
-        <div key={item.id}
+        <div
+            key={item.id}
             onClick={() => navigate(`/product/${item.slug}`)}
-            className="group bg-white border border-transparent hover:border-blue-100 rounded-2xl overflow-hidden shadow-md cursor-pointer hover:shadow-2xl transition-all duration-300 flex flex-col"
+            className="group bg-card-bg border border-border-customer rounded-2xl hover:border-blue-500/30 overflow-hidden shadow-md cursor-pointer hover:shadow-2xl transition-all duration-300 flex flex-col"
         >
-            <div className="relative overflow-hidden h-56 bg-gray-200">
+            <div className="relative overflow-hidden h-56">
                 <LazyLoadImage
                     src={item.images?.[0]}
                     alt={item.title}
                     effect="blur"
                     threshold={300}
                     wrapperClassName="w-full h-full block"
-                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                     onError={(e) => {
                         e.target.src = "https://placehold.co/400x400?text=Image+Not+Found";
                     }}
                 />
             </div>
 
-            <div className="p-4 flex flex-col flex-1">
-                <p className="text-gray-500 text-[11px] font-bold uppercase mb-1">{item.category?.name}</p>
-                <h3 className="text-gray-800 text-sm font-semibold mb-2 line-clamp-2 h-10">
+            <div className="p-4 flex flex-col flex-1 space-y-2">
+                <p className="text-text-muted text-[11px] font-bold uppercase mb-1">{item.category?.name}</p>
+                <h3 className="text-text-main text-sm font-semibold line-clamp-2 min-h-[40px]">
                     {item.title}
                 </h3>
 
-                <div className="flex items-center justify-between gap-1 mt-auto">
-                    <span className="text-blue-600 font-bold text-sm min-[400px]:text-lg">
+                <div className="flex items-center justify-between ">
+                    <span className="text-text-main font-extrabold text-base min-[400px]:text-lg">
                         {formatUSD(item.price)}
                     </span>
+
                     <button
                         onClick={(e) => {
                             e.stopPropagation();
                             dispatch(addToCart(item));
                         }}
-                        className="text-[10px] min-[400px]:text-sm px-2 min-[400px]:px-3 py-1 border rounded-full text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white transition cursor-pointer whitespace-nowrap"
+                        aria-label="Add to cart"
+                        className="flex items-center justify-center w-8 h-8 min-[400px]:w-10 min-[400px]:h-10 rounded-full border border-color-border text-text-main 
+                                 hover:bg-text-main hover:text-page-bg
+                                   active:scale-90 transition-all duration-300 shadow-sm cursor-pointer"
                     >
-                        Thêm
+                        <FaPlus className="text-xs min-[400px]:text-sm" />
                     </button>
                 </div>
             </div>
@@ -54,4 +59,4 @@ const CartProduct = ({ item }) => {
     )
 }
 
-export default CartProduct
+export default CartProduct;

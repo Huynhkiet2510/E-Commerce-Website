@@ -15,24 +15,17 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // TODO: call API gửi liên hệ
-    console.log(formData);
-
-    // reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-50 py-12 px-4">
+    <div className="min-h-[calc(100vh-64px)] py-12 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-        
-        {/* LEFT - CONTACT INFO */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl font-bold mb-4">
             Liên hệ với chúng tôi
           </h1>
-          <p className="text-gray-600 mb-8">
+          <p className=" mb-8">
             Nếu bạn có câu hỏi về đơn hàng, sản phẩm hoặc hợp tác,
             đừng ngần ngại liên hệ với chúng tôi.
           </p>
@@ -40,32 +33,30 @@ const Contact = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               <Phone className="text-indigo-600" />
-              <span className="text-gray-700">0123 456 789</span>
+              <span >0123 456 789</span>
             </div>
 
             <div className="flex items-center gap-4">
               <Mail className="text-indigo-600" />
-              <span className="text-gray-700">support@shop.com</span>
+              <span >support@shop.com</span>
             </div>
 
             <div className="flex items-center gap-4">
               <MapPin className="text-indigo-600" />
-              <span className="text-gray-700">
+              <span >
                 123 Đường ABC, Quận 1, TP.HCM
               </span>
             </div>
           </div>
         </div>
-
-        {/* RIGHT - CONTACT FORM */}
-        <div className="bg-white rounded-2xl shadow-md p-8">
-          <h2 className="text-xl font-semibold mb-6 text-gray-800">
+        <div className="bg-card-bg rounded-2xl shadow-md p-8">
+          <h2 className="text-xl font-semibold mb-6">
             Gửi tin nhắn cho chúng tôi
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">
+              <label className="block text-sm font-medium  mb-1">
                 Họ và tên
               </label>
               <input
@@ -80,7 +71,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">
+              <label className="block text-sm font-medium  mb-1">
                 Email
               </label>
               <input
@@ -95,7 +86,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">
+              <label className="block text-sm font-medium  mb-1">
                 Nội dung
               </label>
               <textarea

@@ -1,12 +1,12 @@
 
-const Sidebar = ({handleApplyFilters, tempFilters, handleInputChange, setTempFilters, categories }) => {
-   
+const Sidebar = ({ handleApplyFilters, tempFilters, handleInputChange, setTempFilters, categories }) => {
+
     return (
-        <aside className="hidden md:block w-72 bg-white border border-gray-100 rounded-2xl shadow-sm h-fit p-6  top-24">
-            <h2 className="font-bold text-xl mb-6 text-gray-800">Bộ lọc</h2>
+        <aside className="hidden md:block w-72 bg-sort-bg border border-border-customer  h-fit p-6 top-24">
+            <h2 className="font-bold text-xl mb-6">Bộ lọc</h2>
 
             <div className="mb-8">
-                <h3 className="font-semibold mb-4 text-gray-700">Khoảng giá ($)</h3>
+                <h3 className="font-semibold mb-4">Khoảng giá ($)</h3>
                 <div className="flex items-center gap-2">
                     <input
                         type="number"
@@ -14,7 +14,7 @@ const Sidebar = ({handleApplyFilters, tempFilters, handleInputChange, setTempFil
                         placeholder="Từ"
                         value={tempFilters.minPrice}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition"
+                        className="w-full border border-gray-200 placeholder-placeholder-main rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition"
                     />
                     <span className="text-gray-400">—</span>
                     <input
@@ -23,13 +23,13 @@ const Sidebar = ({handleApplyFilters, tempFilters, handleInputChange, setTempFil
                         value={tempFilters.maxPrice}
                         onChange={handleInputChange}
                         placeholder="Đến"
-                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition"
+                        className="w-full border border-gray-200 placeholder-placeholder-main rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition"
                     />
                 </div>
             </div>
 
             <div className="mb-8">
-                <h3 className="font-semibold mb-4 text-gray-700">Danh mục</h3>
+                <h3 className="font-semibold mb-4">Danh mục</h3>
                 <div className="flex flex-col gap-3 text-sm">
                     <label className="flex items-center gap-3 cursor-pointer group">
                         <input
@@ -39,18 +39,18 @@ const Sidebar = ({handleApplyFilters, tempFilters, handleInputChange, setTempFil
                             onChange={() => setTempFilters(p => ({ ...p, categoryId: null }))}
                             className="w-4 h-4 text-blue-600 cursor-pointer"
                         />
-                        <span className="text-gray-600">Tất cả</span>
+                        <span>Tất cả</span>
                     </label>
                     {categories.map((cat) => (
                         <label key={cat.id} className="flex items-center gap-3 cursor-pointer group">
                             <input
                                 type="radio"
                                 name="category-group"
-                                checked={Number(tempFilters.categoryId) === cat.id}                            
+                                checked={Number(tempFilters.categoryId) === cat.id}
                                 onChange={() => setTempFilters(p => ({ ...p, categoryId: cat.id }))}
                                 className="w-4 h-4 text-blue-600 cursor-pointer"
                             />
-                            <span className="text-gray-600 group-hover:text-blue-600 transition">{cat.name}</span>
+                            <span className=" group-hover:text-blue-600 transition">{cat.name}</span>
                         </label>
                     ))}
                 </div>
