@@ -28,11 +28,11 @@ const ListProduct = ({ loading, setTempFilters, sortedItems, setInputSearch, set
             </div>
         ) : (
             <>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {sortedItems.length > 0 ? sortedItems.map((item) => (
                         <CartProduct key={item.id} item={item} />
                     )) : (
-                        <div className="col-span-full text-center py-20 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200">
+                        <div className="col-span-full text-center py-20 bg-card-bg rounded-3xl border-2 border-dashed border-border-customer">
                             <div className="text-gray-400 mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 9.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

@@ -34,11 +34,11 @@ const ProductDetail = () => {
       <div className="mb-6 text-sm text-gray-500 flex items-center gap-2">
         <Link to="/" className="hover:text-blue-600">Trang chủ</Link>
         <span>\</span>
-        <span className="text-gray-800 font-medium truncate max-w-[300px]">
+        <span className="text-text-main font-medium truncate max-w-[300px]">
           {product.category?.slug}
         </span>
         <span>\</span>
-        <span className="text-gray-800 font-medium truncate max-w-[300px]">
+        <span className="text-text-main  font-medium truncate max-w-[300px]">
           {product.title}
         </span>
       </div>

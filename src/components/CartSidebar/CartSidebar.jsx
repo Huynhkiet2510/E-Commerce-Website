@@ -24,8 +24,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
     }, [isOpen]);
 
     const totalCart = cart.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
+        (total, item) => total + item.price * item.quantity, 0
     );
 
     const formattedTotal = new Intl.NumberFormat("en-US", {
@@ -44,7 +43,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
             <div
                 className={`
-                    fixed top-0 right-0 w-full md:w-[400px] h-full bg-white shadow-xl z-[100]
+                    fixed top-0 right-0 w-full md:w-[400px] h-full bg-card-bg shadow-xl z-[100]
                     flex flex-col /* Sử dụng Flexbox để quản lý chiều cao */
                     transform transition-transform ease-in-out duration-500
                     ${isOpen ? 'translate-x-0' : 'translate-x-full'}
@@ -78,7 +77,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                         </div>
                                         <div className='space-y-1'>
                                             <p className="font-medium text-sm line-clamp-1">{item.title}</p>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs">
                                                 {item.quantity} x {item.price}$
                                             </p>
                                             <div className="flex items-center space-x-2 mt-1">
@@ -116,7 +115,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* 3. Footer Sidebar - Cố định ở đáy */}
-                <div className='p-4 border-t bg-gray-50 shrink-0'>
+                <div className='p-4 border-t bg-card-bg shrink-0'>
                     <h3 className='font-bold text-center pb-3 text-lg'>
                         Tổng giá trị: <span className="text-indigo-600">{formattedTotal}</span>
                     </h3>
@@ -127,8 +126,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                 onClose();
                                 navigate("/checkout");
                             }}
-                            className={`w-full py-3 rounded-lg font-semibold shadow-md transition
-        ${!cart.length
+                            className={`w-full py-3 rounded-lg font-semibold shadow-md transition cursor-pointer
+                                    ${!cart.length
                                     ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                                     : "bg-indigo-600 text-white hover:bg-indigo-700"
                                 }`}
@@ -138,7 +137,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
                         <button
                             onClick={() => dispatch(clearCart())}
-                            className="w-full bg-white border border-gray-300 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-150">
+                            className="w-full bg-white border border-gray-300 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-150 cursor-pointer">
                             Xóa Giỏ Hàng
                         </button>
                     </div>

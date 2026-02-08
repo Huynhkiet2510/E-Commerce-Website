@@ -12,7 +12,7 @@ const MainContent = ({ activeImg, setActiveImg, product }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-                <div className="border rounded-2xl overflow-hidden shadow-sm bg-white">
+                <div className="border rounded-2xl overflow-hidden">
                     <img
                         src={activeImg}
                         alt={product.title}
@@ -42,21 +42,24 @@ const MainContent = ({ activeImg, setActiveImg, product }) => {
                 <span className="inline-block bg-blue-50 text-blue-600 px-4 py-1 rounded-full text-sm font-medium">
                     {product.category.name}
                 </span>
-                <h1 className="text-3xl font-bold text-gray-800">
+                <h1 className="text-3xl font-bold text-text-main">
                     {product.title}
                 </h1>
-                <p className="text-4xl font-bold text-blue-600">
+                <div>
+
+                </div>
+                <p className="text-4xl text-text-main">
                     {formatUSD(product.price)}
                 </p>
                 <div className="border-t pt-4">
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-text-main leading-relaxed">
                         {product.description}
                     </p>
                 </div>
                 <div className="pt-6 flex gap-4">
                     <button
                         onClick={handleAddToCart}
-                        className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-all active:scale-95 cursor-pointer"
+                        className="w-full bg-blue-600 text-white font-semibold py-3 rounded-3xl hover:bg-blue-700 transition-all active:scale-95 cursor-pointer"
                     >
                         Thêm vào giỏ hàng
                     </button>

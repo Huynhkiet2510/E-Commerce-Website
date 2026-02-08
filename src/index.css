@@ -1,12 +1,55 @@
 @import "tailwindcss";
 
-html {
-  scrollbar-gutter: stable;
-  background-color: #F5F5F5;
+@theme {
+  --color-page-bg: #E2E4F0;
+  --color-navbar-bg: #f1f5f9;
+  --color-pagination-bg: #f1f5f9;
+  --color-card-bg: #f1f5f9;
+  --color-sort-bg: #f1f5f9;
+  --color-border-customer: #000000;
+  --color-text-main: #2D2D30;
+  --color-text-muted: #6B7280;
+  --color-text-active: #f1f5f9;
+  --color-text-hover: #f1f5f9;
+  --color-placeholder-main: #2D2D30;
+  --color-card-skeleton: #d1d5db;
+  --color-notification-unread: #F1F5F9;
+  --color-card-skeleton: #D1D5DB;
+  --color-nav-icon: #2D2D30;
+  --color-nav-icon-hover: #9ca3af;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-page-bg: #02080F;
+  --color-navbar-bg: #333333;
+  --color-pagination-bg: #333333;
+  --color-card-bg: #333333;
+  --color-sort-bg: #333333;
+  --color-border-customer: #e5e7eb;
+  --color-text-main: #ffffff;
+  --color-text-muted: #747474;
+  --color-text-active: #1a141d;
+  --color-text-hover: #14161D;
+  --color-placeholder-main: #ffffff;
+  --color-card-skeleton: #14161D;
+  --color-nav-icon: #ffffff;
+  --color-nav-icon-hover: #374151;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-page-bg);
+    color: var(--color-text-main);
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
 
 @theme {
+  --color-main-bg: var(--background);
+  --color-card-custom: var(--card-bg);
+
   @keyframes spin {
     from {
       transform: rotate(0deg);

@@ -15,17 +15,17 @@ const UserMenu = ({ user, isMenuOpen, setIsMenuOpen , onLogout, menuRef }) => {
                         onClick={() => setIsMenuOpen(prev => !prev)}
                     />
                 ) : (
-                    <button onClick={() => navigate("/login")} className="text-gray-700 hover:text-indigo-600 p-2">
+                    <button onClick={() => navigate("/login")} className="hover:text-indigo-600 p-2">
                         <User className="w-6 h-6" />
                     </button>
                 )}
             </div>
 
             {isMenuOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-50">
+                <div className="absolute right-0 mt-2 w-40 bg-card-bg border rounded-lg shadow-lg z-50">
                     <button
                         onClick={() => { navigate("/profile"); setIsMenuOpen(false); }}
-                        className="w-full text-left px-4 py-2 hover:bg-gray-100 rounded-t-lg text-sm"
+                        className="w-full text-left px-4 py-2 hover:bg-gray-100 hover:text-text-hover rounded-t-lg text-sm"
                     >
                         Profile
                     </button>

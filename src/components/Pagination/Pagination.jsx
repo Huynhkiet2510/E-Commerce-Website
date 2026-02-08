@@ -1,28 +1,50 @@
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   return (
     <div className="flex justify-center items-center gap-2 my-8">
+
       <button
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        className="px-4 py-2 border rounded disabled:opacity-50"
+        className="
+          h-10 px-4 rounded border
+          bg-pagination-bg
+          disabled:opacity-50 disabled:cursor-not-allowed
+          hover:bg-gray-100
+        "
       >
         Trước
       </button>
 
-      {[...Array(totalPages)].map((_, i) => (
-        <button
-          key={i + 1}
-          onClick={() => onPageChange(i + 1)}
-          className={`w-10 h-10 border rounded ${currentPage === i + 1 ? 'bg-blue-500 text-white' : 'hover:bg-gray-100'}`}
-        >
-          {i + 1}
-        </button>
-      ))}
+      {[...Array(totalPages)].map((_, i) => {
+        const page = i + 1;
+        const isActive = currentPage === page;
+
+        return (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`
+              w-10 h-10 rounded border
+              ${isActive
+                ? 'bg-blue-500 text-white border-blue-500 border border-border-customer'
+                : 'bg-pagination-bg hover:bg-gray-100'}
+            `}
+          >
+            {page}
+          </button>
+        );
+      })}
+
 
       <button
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        className="px-4 py-2 border rounded disabled:opacity-50"
+        className="
+          h-10 px-4 rounded border
+          bg-pagination-bg
+          disabled:opacity-50 disabled:cursor-not-allowed
+          hover:bg-gray-100
+        "
       >
         Sau
       </button>
@@ -30,4 +52,4 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   );
 };
 
-export default Pagination
+export default Pagination;

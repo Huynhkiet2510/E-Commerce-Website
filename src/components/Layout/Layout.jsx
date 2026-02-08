@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const Layout = () => {
   const [inputSearch, setInputSearch] = useState("");
@@ -29,6 +30,7 @@ const Layout = () => {
       <main>
         <Outlet context={{ searchTerm, setSearchTerm, setInputSearch }} />
       </main>
+      <Footer />
     </div>
   );
 };

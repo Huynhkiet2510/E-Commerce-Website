@@ -51,7 +51,7 @@ const ListProductPage = () => {
                 </div>
 
             </div>
-            <div className="py-8 border-t border-gray-100">
+            <div className="py-8">
                 <Pagination
                     currentPage={currentPage}
                     totalPages={totalPages}
