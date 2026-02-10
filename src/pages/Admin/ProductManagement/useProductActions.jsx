@@ -9,8 +9,6 @@ export const useProductActions = () => {
     const [error, setError] = useState(null);
     const [indexEdit, setIndexEdit] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // Sử dụng Antd Form thay cho việc quản lý formData thủ công
     const [form] = Form.useForm();
 
     /* ================= 1. FETCH DỮ LIỆU ================= */
@@ -24,7 +22,7 @@ export const useProductActions = () => {
                 setProducts(res.data);
             } catch (err) {
                 if (axios.isCancel(err)) return;
-                setError(err);
+                setError(err.response?.data?.message || err.message);
             } finally {
                 setLoading(false);
             }
@@ -60,7 +58,7 @@ export const useProductActions = () => {
             form.resetFields();
         } catch (err) {
             if (err.errorFields) return;
-            setError(err);
+            setError(err.response?.data?.message || err.message);
         } finally {
             setLoading(false);
         }
@@ -100,7 +98,7 @@ export const useProductActions = () => {
             await remove(id);
             setProducts(prev => prev.filter(item => item.id !== id));
         } catch (err) {
-            setError(err);
+            setError(err.response?.data?.message || err.message);
         } finally {
             setLoading(false);
         }

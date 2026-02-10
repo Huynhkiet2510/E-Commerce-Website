@@ -20,7 +20,7 @@ export const useCategoryAction = () => {
       setCategories(res.data);
     } catch (err) {
       if (axios.isCancel(err)) return;
-      setError(err);
+      setError(err.response?.data?.message || err.message);
     } finally {
       setLoading(false);
     }
@@ -72,7 +72,7 @@ export const useCategoryAction = () => {
       handleCancel();
     } catch (err) {
       if (err.errorFields) return;
-      setError(err);
+      setError(err.response?.data?.message || err.message);
     } finally {
       setLoading(false);
     }
@@ -86,7 +86,7 @@ export const useCategoryAction = () => {
       await remove(id);
       setCategories((prev) => prev.filter((item) => item.id !== id));
     } catch (err) {
-        setError(err);
+      setError(err.response?.data?.message || err.message);
     } finally {
       setLoading(false);
     }

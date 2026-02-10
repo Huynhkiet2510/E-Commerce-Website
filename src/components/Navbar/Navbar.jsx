@@ -54,7 +54,7 @@ const Navbar = ({ inputSearch, setInputSearch, onSearch }) => {
       <CartSidebar isOpen={state.isCartOpen} onClose={() => actions.setIsCartOpen(false)} />
 
       {state.isMenuOpen && (
-        <div className="lg:hidden bg-white border-t px-4 py-4 space-y-4 shadow-inner">
+        <div className="lg:hidden bg-navbar-bg border-t px-4 py-4 space-y-4 shadow-inner">
           <SearchBar inputSearch={inputSearch} setInputSearch={setInputSearch} onSearch={onSearch} />
           <NavLinks links={navLinks} className="space-y-4" onClickItem={() => actions.setIsMenuOpen(false)} />
         </div>
