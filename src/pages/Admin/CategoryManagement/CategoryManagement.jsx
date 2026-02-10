@@ -38,9 +38,14 @@ const CategoryManagement = () => {
 
           <Card className="shadow-[0_4px_20px_rgba(0,0,0,0.05)] min-h-[590px] flex flex-col">
             {error && (
-              <div className="p-4 text-[#ff4d4f] bg-[#fff2f0] flex items-center gap-2">
-                {error}
-              </div>
+              <Alert
+                message="Lỗi"
+                description={error.message || "Đã có lỗi xảy ra"}
+                type="error"
+                showIcon
+                closable
+                className="mb-4"
+              />
             )}
 
             <Table

@@ -1,4 +1,22 @@
+
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const getPages = () => {
+    const pages = [];
+    const delta = window.innerWidth < 640 ? 1 : 2;
+    const left = Math.max(2, currentPage - delta);
+    const right = Math.min(totalPages - 1, currentPage + delta);
+
+    pages.push(1);
+    if (left > 2) pages.push('...');
+    for (let i = left; i <= right; i++) {
+      pages.push(i);
+    }
+    if (right < totalPages - 1) pages.push('...');
+    if (totalPages > 1) pages.push(totalPages);
+
+    return pages;
+  };
+
   return (
     <div className="flex justify-center items-center gap-2 my-8">
 
@@ -15,25 +33,26 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         Trước
       </button>
 
-      {[...Array(totalPages)].map((_, i) => {
-        const page = i + 1;
-        const isActive = currentPage === page;
-
-        return (
-          <button
-            key={page}
-            onClick={() => onPageChange(page)}
-            className={`
-              w-10 h-10 rounded border
-              ${isActive
+      <div className="flex items-center gap-1 md:gap-2">
+        {getPages().map((p, index) =>
+          p === '...' ? (
+            <span key={index} className="px-1 md:px-2 text-text-muted">
+              ...
+            </span>
+          ) : (
+            <button
+              key={index}
+              onClick={() => onPageChange(p)}
+              className={`w-10 h-10 rounded border ${p === currentPage
                 ? 'bg-blue-500 text-white border-blue-500 border border-border-customer'
-                : 'bg-pagination-bg hover:bg-gray-100'}
-            `}
-          >
-            {page}
-          </button>
-        );
-      })}
+                : 'bg-pagination-bg hover:text-text-main hover:bg-page-bg'}
+                }`}
+            >
+              {p}
+            </button>
+          )
+        )}
+      </div>
 
 
       <button
@@ -53,3 +72,4 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 export default Pagination;
+

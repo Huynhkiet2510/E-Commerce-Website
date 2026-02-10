@@ -7,7 +7,7 @@ import Login from "./pages/Customer/Login/LoginPage";
 import Profile from "./pages/Customer/Profile/ProfilePage";
 import OrderSuccess from "./pages/Customer/OrderSuccess/OrderSuccessPage"
 import ProductDetail from "./pages/Customer/ProductDetail/ProductDetailPage";
-import PromotionsPage from "./pages/Customer/PromotionsPage/PromotionsPage";
+import PromotionsPage from "./pages/Customer/Promotions/PromotionsPage";
 import ProductManagement from "./pages/Admin/ProductManagement/ProductManagement"
 import CategoryManagement from "./pages/Admin/CategoryManagement/CategoryManagement";
 import GuestRoute from "./routes/GuestRoute";
@@ -16,7 +16,7 @@ import UserManagement from "./pages/Admin/UserMangement/UserManagement";
 import Layout from "./components/Layout/Layout";
 import LayoutAdmin from "./components/Layout/LayoutAdmin";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
-import Contact from "./pages/Customer/Contact/Contact"
+import Contact from "./pages/Customer/Contact/ContactPage"
 import UnauthorizedPage from "./pages/Customer/Unauthorized/Unauthorized";
 import ViewDetailOrderPage from "./pages/Customer/ViewDetailOrder/ViewDetailOrderPage";
 import { getProfile } from "../src/stores/authSlice";

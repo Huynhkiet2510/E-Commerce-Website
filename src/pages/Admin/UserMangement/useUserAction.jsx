@@ -22,7 +22,7 @@ export const useUserAction = () => {
                 setUsers(res.data);
             } catch (err) {
                 if (axios.isCancel(err)) return;
-                setError(err);
+                setError(err.response?.data?.message || err.message)
             } finally {
                 setLoading(false);
             }
@@ -59,9 +59,7 @@ export const useUserAction = () => {
             setIsModalOpen(false);
         } catch (err) {
             if (err.errorFields) return;
-            const msg = err.response?.data?.message || "Có lỗi xảy ra";
-            setError(msg);
-            message.error(msg);
+            setError(err.response?.data?.message || err.message);
         } finally {
             setLoading(false);
         }
@@ -102,7 +100,7 @@ export const useUserAction = () => {
             await remove(id);
             setUsers(prev => prev.filter(item => item.id !== id));
         } catch (err) {
-            setError(err);
+            setError(err.response?.data?.message || err.message);
         } finally {
             setLoading(false);
         }

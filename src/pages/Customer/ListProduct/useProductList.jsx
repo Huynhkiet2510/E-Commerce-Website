@@ -8,7 +8,8 @@ export const useProductList = (isCategoryPage = false, slugId = null, searchTerm
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [totalPages, setTotalPages] = useState(10);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [totalPages, setTotalPages] = useState(500);
     const [searchParams, setSearchParams] = useSearchParams();
     const limit = 12;
     const currentPage = parseInt(searchParams.get("page")) || 1;
@@ -108,7 +109,6 @@ export const useProductList = (isCategoryPage = false, slugId = null, searchTerm
     return {
         loading, error, sortedItems, categories, totalPages, currentPage, tempFilters,
         setTempFilters, setCategories, handleInputChange, handleApplyFilters, fetchData,
-        handlePageChange,
-        setSearchParams
+        handlePageChange, setSearchParams, isFilterOpen, setIsFilterOpen,
     };
 };
